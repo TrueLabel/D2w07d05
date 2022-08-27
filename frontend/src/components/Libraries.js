@@ -1,7 +1,7 @@
 const Library = (props) => {
 	return (
 		<div className='library'>
-			<h2> Categories: {props.library.category}</h2>
+			<h2> Libraries: {props.libraries}</h2>
 		</div>
 	);
 };

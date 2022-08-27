@@ -3,13 +3,13 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Cards from "./components/Cards";
 import Books from "./components/Books";
-import Library from "./components/Lib";
+import Library from "./components/Libraries";
 import React from "react-bootstrap";
 import { set } from "mongoose";
 
 function App() {
 	let [book, setBook] = useState([]);
-	let [category, setCategory] = useState([]);
+	let [library, setLibrary] = useState([]);
 	let [card, setCard] = useState([]);
 	let [toggle, setToggle] = useState(false);
 	let [locations, setLocations] = useState([]);
@@ -28,9 +28,9 @@ function App() {
 		setshow(false);
 	};
 
-	const getEpisodes = () => {
+	const getBooks = () => {
 		axios.get("").then((response) => {
-			setEpisodes(response.data.results);
+			setBook(response.data.book);
 			setNext(response.data.info.next);
 		});
 		setToggle(true);
@@ -96,7 +96,7 @@ function App() {
 
 	return (
 		<div className='container'>
-			<h1 className='header'>Rick and Morty</h1>
+			<h1 className='header'>D2 Lore</h1>
 
 			<nav className='nav navbar navbar--top'>
 				<div>
@@ -104,7 +104,7 @@ function App() {
 						&#60;
 					</button>
 					<button className='btn btn-outline-warning' onClick={getCharacters}>
-						Show Characters
+						Library
 					</button>
 
 					<button className='arrow-next' onClick={nextCharacter}>
@@ -116,7 +116,7 @@ function App() {
 						&#60;
 					</button>
 					<button className='btn btn-outline-warning' onClick={getEpisodes}>
-						Episodes
+						Books
 					</button>
 
 					<button className='arrow-next' onClick={nextEpisode}>
@@ -128,7 +128,7 @@ function App() {
 						&#60;
 					</button>
 					<button className='btn btn-outline-warning' onClick={getLocations}>
-						Location
+						Cards
 					</button>
 					<button className='arrow-next' onClick={nextLocation}>
 						&#62;
@@ -137,26 +137,26 @@ function App() {
 			</nav>
 
 			<div className='main-content'>
-				{character.map((character) => {
+				{libraries.map((library) => {
 					return (
-						<div key={character.id}>
-							{show ? <Character character={character} /> : null}
+						<div key={library.id}>
+							{show ? <Library library={library} /> : null}
 						</div>
 					);
 				})}
 
-				{episodes.map((episode) => {
+				{books.map((book) => {
 					return (
-						<div key={episode.id}>
-							{toggle ? <Episode episode={episode} /> : null}
+						<div key={book.id}>
+							{toggle ? <Book book={book} /> : null}
 						</div>
 					);
 				})}
 
-				{locations.map((location) => {
+				{cards.map((card) => {
 					return (
-						<div key={location.id}>
-							{on ? <Location location={location} /> : null}
+						<div key={card.id}>
+							{on ? <Card card={card} /> : null}
 						</div>
 					);
 				})}
