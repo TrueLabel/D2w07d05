@@ -12,3 +12,6 @@ hello this is a test v3
   test push to main - Zane
 
   test push to main - ed
+
+  test dev push and merge to main - Zane
+  
