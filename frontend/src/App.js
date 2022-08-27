@@ -9,7 +9,7 @@ import { set } from "mongoose";
 
 function App() {
 	let [book, setBook] = useState([]);
-	let [category, setCategory] = useState([]);
+	let [Library, setLibrary] = useState([]);
 	let [card, setCard] = useState([]);
 	let [toggle, setToggle] = useState(false);
 	let [locations, setLocations] = useState([]);
@@ -96,7 +96,7 @@ function App() {
 
 	return (
 		<div className='container'>
-			<h1 className='header'>Rick and Morty</h1>
+			<h1 className='header'>D2 Lore</h1>
 
 			<nav className='nav navbar navbar--top'>
 				<div>
@@ -104,7 +104,7 @@ function App() {
 						&#60;
 					</button>
 					<button className='btn btn-outline-warning' onClick={getCharacters}>
-						Show Characters
+						Library
 					</button>
 
 					<button className='arrow-next' onClick={nextCharacter}>
@@ -116,7 +116,7 @@ function App() {
 						&#60;
 					</button>
 					<button className='btn btn-outline-warning' onClick={getEpisodes}>
-						Episodes
+						Books
 					</button>
 
 					<button className='arrow-next' onClick={nextEpisode}>
@@ -128,7 +128,7 @@ function App() {
 						&#60;
 					</button>
 					<button className='btn btn-outline-warning' onClick={getLocations}>
-						Location
+						Cards
 					</button>
 					<button className='arrow-next' onClick={nextLocation}>
 						&#62;
@@ -137,26 +137,26 @@ function App() {
 			</nav>
 
 			<div className='main-content'>
-				{character.map((character) => {
+				{books.map(books) => {
 					return (
-						<div key={character.id}>
-							{show ? <Character character={character} /> : null}
+						<div key={book.id}>
+							{show ? <Books books={books} /> : null}
 						</div>
 					);
 				})}
 
-				{episodes.map((episode) => {
+				{cards.map((cards) => {
 					return (
-						<div key={episode.id}>
-							{toggle ? <Episode episode={episode} /> : null}
+						<div key={cards.id}>
+							{toggle ? <Cards cards={cards} /> : null}
 						</div>
 					);
 				})}
 
-				{locations.map((location) => {
+				{Library.map((library) => {
 					return (
-						<div key={location.id}>
-							{on ? <Location location={location} /> : null}
+						<div key={library.id}>
+							{on ? <Library library={library} /> : null}
 						</div>
 					);
 				})}
