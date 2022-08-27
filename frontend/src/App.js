@@ -3,13 +3,15 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Cards from "./components/Cards";
 import Books from "./components/Books";
-import Library from "./components/Lib";
+import Library from "./components/Libraries";
 import React from "react-bootstrap";
 import { set } from "mongoose";
 
 function App() {
 	let [book, setBook] = useState([]);
-	let [Library, setLibrary] = useState([]);
+  
+	let [library, setLibrary] = useState([]);
+
 	let [card, setCard] = useState([]);
 	let [toggle, setToggle] = useState(false);
 	let [locations, setLocations] = useState([]);
@@ -28,9 +30,9 @@ function App() {
 		setshow(false);
 	};
 
-	const getEpisodes = () => {
+	const getBooks = () => {
 		axios.get("").then((response) => {
-			setEpisodes(response.data.results);
+			setBook(response.data.book);
 			setNext(response.data.info.next);
 		});
 		setToggle(true);
@@ -137,26 +139,32 @@ function App() {
 			</nav>
 
 			<div className='main-content'>
-				{books.map(books) => {
-					return (
-						<div key={book.id}>
-							{show ? <Books books={books} /> : null}
-						</div>
-					);
-				})}
 
-				{cards.map((cards) => {
-					return (
-						<div key={cards.id}>
-							{toggle ? <Cards cards={cards} /> : null}
-						</div>
-					);
-				})}
-
-				{Library.map((library) => {
+				{libraries.map((library) => {
 					return (
 						<div key={library.id}>
-							{on ? <Library library={library} /> : null}
+							{show ? <Library library={library} /> : null}
+
+						</div>
+					);
+				})}
+
+
+				{books.map((book) => {
+					return (
+						<div key={book.id}>
+							{toggle ? <Book book={book} /> : null}
+
+						</div>
+					);
+				})}
+
+
+				{cards.map((card) => {
+					return (
+						<div key={card.id}>
+							{on ? <Card card={card} /> : null}
+
 						</div>
 					);
 				})}

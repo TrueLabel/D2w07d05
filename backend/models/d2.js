@@ -4,7 +4,7 @@ const shelterSchema = new mongoose.Schema(
   {
 
     readcheck: Boolean,
-    category: String,
+    library: String,
     book: String,
     card: String
 
