@@ -3,10 +3,12 @@ const mongoose = require('mongoose');
 const shelterSchema = new mongoose.Schema(
   {
 
-    readcheck: Boolean,
+    
     library: String,
     book: String,
-    card: String
+    card: String,
+    image: String,
+    readcheck: Boolean
 
 }
 );
