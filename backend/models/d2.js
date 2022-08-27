@@ -8,7 +8,7 @@ const shelterSchema = new mongoose.Schema(
     book: String,
     card: String,
     image: String,
-    readcheck: Boolean
+    readCheck: {type:Boolean, default: false}
 
 }
 );
