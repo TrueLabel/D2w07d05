@@ -9,7 +9,9 @@ import { set } from "mongoose";
 
 function App() {
 	let [book, setBook] = useState([]);
+  
 	let [library, setLibrary] = useState([]);
+
 	let [card, setCard] = useState([]);
 	let [toggle, setToggle] = useState(false);
 	let [locations, setLocations] = useState([]);
@@ -137,26 +139,32 @@ function App() {
 			</nav>
 
 			<div className='main-content'>
+
 				{libraries.map((library) => {
 					return (
 						<div key={library.id}>
 							{show ? <Library library={library} /> : null}
+
 						</div>
 					);
 				})}
+
 
 				{books.map((book) => {
 					return (
 						<div key={book.id}>
 							{toggle ? <Book book={book} /> : null}
+
 						</div>
 					);
 				})}
+
 
 				{cards.map((card) => {
 					return (
 						<div key={card.id}>
 							{on ? <Card card={card} /> : null}
+
 						</div>
 					);
 				})}
