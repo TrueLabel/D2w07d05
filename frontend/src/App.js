@@ -52,7 +52,7 @@ const App = () => {
         library: newDescription,
         // readCheck: newComplete,
         book: newSpec,
-		card: newCard,
+		    card: newCard,
         image: newImg
       }
     ).then(() => {
@@ -105,7 +105,7 @@ const handleToggleComplete = (todoData) => {
   {
     library: todoData.library,
     readCheck: !todoData.readCheck,
-	book: todoData.book,
+	  book: todoData.book,
     card: todoData.card,
     image: todoData.image
   }
@@ -124,10 +124,10 @@ const updateData = (d2) => {
 
 	axios.put(`http://localhost:3000/d2/${d2._id}`,
 	{
-		library: newDescription? newDescription : d2.library,
+		    library: newDescription? newDescription : d2.library,
         readCheck: d2.readCheck,
         book: newSpec? newSpec : d2.book,
-		card: newCard? newCard : d2.card,
+		    card: newCard? newCard : d2.card,
         image: newImg? newImg : d2.image
 
 
